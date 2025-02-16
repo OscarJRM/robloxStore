@@ -48,7 +48,7 @@ function Support() {
 
   return (
     <div className="max-w-4xl mx-auto px-4 py-12">
-      <div className="bg-white rounded-xl shadow-lg overflow-hidden">
+      <div className="bg-white dark:bg-gray-700 rounded-xl shadow-lg overflow-hidden">
         {/* Header */}
         <div className="bg-blue-600 text-white p-4">
           <div className="flex items-center gap-2">
@@ -73,7 +73,7 @@ function Support() {
                 className={`max-w-[80%] rounded-lg p-3 ${
                   message.isUser
                     ? 'bg-blue-600 text-white'
-                    : 'bg-gray-100 text-gray-800'
+                    : 'bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-white'
                 }`}
               >
                 <p>{message.text}</p>

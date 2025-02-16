@@ -1,56 +1,36 @@
 import React from 'react';
 import { Store, Clock, Zap, ShieldCheck, Award } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { Product } from '../entities/Product';
+import { supabase } from '../lib/supabase';
+// Define the Product type
 
-const products = [
-  { 
-    id: 1, 
-    amount: 100, 
-    price: 1, 
-    delivery: '5 días', 
-    instant: false,
-    popular: false,
-    bonus: '1 punto de sorteo'
-  },
-  { 
-    id: 2, 
-    amount: 200, 
-    price: 2, 
-    delivery: '5 días', 
-    instant: false,
-    popular: false,
-    bonus: '2 puntos de sorteo'
-  },
-  { 
-    id: 3, 
-    amount: 500, 
-    price: 5, 
-    delivery: 'Instantáneo', 
-    instant: true,
-    popular: true,
-    bonus: '5 puntos de sorteo'
-  },
-  { 
-    id: 4, 
-    amount: 1000, 
-    price: 10, 
-    delivery: 'Instantáneo', 
-    instant: true,
-    popular: false,
-    bonus: '10 puntos de sorteo'
-  },
-  { 
-    id: 5, 
-    amount: 5000, 
-    price: 45, 
-    delivery: 'Instantáneo', 
-    instant: true,
-    popular: false,
-    bonus: '50 puntos de sorteo + 1 entrada gratis'
-  },
-];
+
+const useProducts = () => {
+  const [products, setProducts]= useState<Product[]>([]);
+
+  useEffect(() =>{
+    const fetchProducts = async () => {
+      const {data, error} = await supabase
+      .from('products')
+      .select('*');
+
+      if (error) {
+        console.log("Error fetching products", error);
+        return;
+      }
+
+      setProducts(data || []);
+    };
+    
+    fetchProducts();
+  },[]);
+  return products;
+ }
 
 function Shop() {
   const [filter, setFilter] = React.useState<'all' | 'instant' | 'delayed'>('all');
+  const products = useProducts();
 
   const filteredProducts = products.filter(product => {
     if (filter === 'instant') return product.instant;
@@ -122,7 +102,7 @@ function Shop() {
                 <span className="bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-300 px-3 py-1 rounded-full text-sm font-medium flex items-center gap-1">
                   <Zap className="w-4 h-4" />
                   Instantáneo
-                </span>
+                </span> 
               ) : (
                 <span className="bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-300 px-3 py-1 rounded-full text-sm font-medium flex items-center gap-1">
                   <Clock className="w-4 h-4" />

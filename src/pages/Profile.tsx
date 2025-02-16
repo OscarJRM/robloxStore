@@ -12,36 +12,36 @@ function Profile() {
     <div className="max-w-7xl mx-auto px-4 py-12">
       <div className="grid md:grid-cols-3 gap-8">
         {/* Stats Cards */}
-        <div className="bg-white rounded-xl shadow-lg p-6">
+        <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6">
           <div className="flex items-center gap-3 mb-4">
             <History className="w-6 h-6 text-blue-600" />
             <h3 className="text-xl font-bold">Total Robux</h3>
           </div>
           <p className="text-3xl font-bold">1,600</p>
-          <p className="text-gray-600">Comprados hasta ahora</p>
+          <p className="text-gray-600 dark:text-white">Comprados hasta ahora</p>
         </div>
 
-        <div className="bg-white rounded-xl shadow-lg p-6">
+        <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6">
           <div className="flex items-center gap-3 mb-4">
             <Gift className="w-6 h-6 text-blue-600" />
             <h3 className="text-xl font-bold">Puntos</h3>
           </div>
           <p className="text-3xl font-bold">15</p>
-          <p className="text-gray-600">Para el próximo sorteo</p>
+          <p className="text-gray-600 dark:text-white">Para el próximo sorteo</p>
         </div>
 
-        <div className="bg-white rounded-xl shadow-lg p-6">
+        <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6">
           <div className="flex items-center gap-3 mb-4">
             <Award className="w-6 h-6 text-blue-600" />
             <h3 className="text-xl font-bold">Entradas</h3>
           </div>
           <p className="text-3xl font-bold">2</p>
-          <p className="text-gray-600">En el sorteo actual</p>
+          <p className="text-gray-600 dark:text-white">En el sorteo actual</p>
         </div>
       </div>
 
       {/* Purchase History */}
-      <div className="bg-white rounded-xl shadow-lg mt-8 p-6">
+      <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg mt-8 p-6">
         <h2 className="text-2xl font-bold mb-6">Historial de Compras</h2>
         <div className="overflow-x-auto">
           <table className="w-full">
@@ -61,8 +61,8 @@ function Profile() {
                     <span
                       className={`px-2 py-1 rounded-full text-sm ${
                         purchase.status === 'Entregado'
-                          ? 'bg-green-100 text-green-800'
-                          : 'bg-yellow-100 text-yellow-800'
+                          ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300'
+                          : 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300'
                       }`}
                     >
                       {purchase.status}

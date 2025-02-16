@@ -27,7 +27,7 @@ function Raffle() {
 
       {/* Progress and Timer */}
       <div className="grid md:grid-cols-2 gap-8 mb-12">
-        <div className="bg-white rounded-xl shadow-lg p-8">
+        <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8">
           <h2 className="text-2xl font-bold mb-4">Tu Progreso</h2>
           <div className="mb-4">
             <div className="flex justify-between mb-2">
@@ -41,7 +41,7 @@ function Raffle() {
               ></div>
             </div>
           </div>
-          <p className="text-gray-600 mb-4">
+          <p className="text-gray-600 dark:text-white mb-4">
             Necesitas {pointsNeeded - userPoints} puntos más para una entrada
           </p>
           <button className="w-full bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">
@@ -49,7 +49,7 @@ function Raffle() {
           </button>
         </div>
 
-        <div className="bg-white rounded-xl shadow-lg p-8">
+        <div className="bg-white rounded-xl shadow-lg p-8 dark:bg-gray-800">
           <h2 className="text-2xl font-bold mb-4">Tiempo Restante</h2>
           <div className="text-center">
             <Trophy className="w-12 h-12 text-yellow-500 mx-auto mb-4" />
@@ -57,21 +57,21 @@ function Raffle() {
               date={raffleEndDate}
               renderer={({ days, hours, minutes, seconds }) => (
                 <div className="grid grid-cols-4 gap-4">
-                  <div className="bg-gray-100 p-3 rounded-lg">
+                  <div className="bg-gray-100 p-3 rounded-lg dark:bg-gray-700">
                     <div className="text-3xl font-bold">{days}</div>
-                    <div className="text-sm text-gray-600">Días</div>
+                    <div className="text-sm text-gray-600 dark:text-white">Días</div>
                   </div>
-                  <div className="bg-gray-100 p-3 rounded-lg">
+                  <div className="bg-gray-100 p-3 rounded-lg dark:bg-gray-700">
                     <div className="text-3xl font-bold">{hours}</div>
-                    <div className="text-sm text-gray-600">Horas</div>
+                    <div className="text-sm text-gray-600 dark:text-white">Horas</div>
                   </div>
-                  <div className="bg-gray-100 p-3 rounded-lg">
+                  <div className="bg-gray-100 p-3 rounded-lg dark:bg-gray-700">
                     <div className="text-3xl font-bold">{minutes}</div>
-                    <div className="text-sm text-gray-600">Minutos</div>
+                    <div className="text-sm text-gray-600 dark:text-white">Minutos</div>
                   </div>
-                  <div className="bg-gray-100 p-3 rounded-lg">
+                  <div className="bg-gray-100 p-3 rounded-lg dark:bg-gray-700">
                     <div className="text-3xl font-bold">{seconds}</div>
-                    <div className="text-sm text-gray-600">Segundos</div>
+                    <div className="text-sm text-gray-600 dark:text-white">Segundos</div>
                   </div>
                 </div>
               )}
@@ -81,16 +81,16 @@ function Raffle() {
       </div>
 
       {/* Participants */}
-      <div className="bg-white rounded-xl shadow-lg p-8">
+      <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8">
         <div className="flex items-center gap-2 mb-6">
           <Users className="w-6 h-6 text-blue-600" />
           <h2 className="text-2xl font-bold">Participantes</h2>
         </div>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           {participants.map((participant, index) => (
-            <div key={index} className="bg-gray-100 p-3 rounded-lg text-center">
+            <div key={index} className="bg-gray-100 dark:bg-gray-700 p-3 rounded-lg text-center">
               <div className="font-medium">{participant}</div>
-              <div className="text-sm text-gray-600">2 entradas</div>
+              <div className="text-sm text-gray-600 dark:text-white">2 entradas</div>
             </div>
           ))}
         </div>
