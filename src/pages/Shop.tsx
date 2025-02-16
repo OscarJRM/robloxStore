@@ -3,30 +3,24 @@ import { Store, Clock, Zap, ShieldCheck, Award } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { Product } from '../entities/Product';
 import { supabase } from '../lib/supabase';
-// Define the Product type
-
 
 const useProducts = () => {
-  const [products, setProducts]= useState<Product[]>([]);
+  const [products, setProducts] = useState<Product[]>([]);
 
-  useEffect(() =>{
+  useEffect(() => {
     const fetchProducts = async () => {
-      const {data, error} = await supabase
-      .from('products')
-      .select('*');
-
+      const { data, error } = await supabase.from('products').select('*');
       if (error) {
         console.log("Error fetching products", error);
         return;
       }
-
       setProducts(data || []);
     };
-    
     fetchProducts();
-  },[]);
+  }, []);
+
   return products;
- }
+};
 
 function Shop() {
   const [filter, setFilter] = React.useState<'all' | 'instant' | 'delayed'>('all');
@@ -46,48 +40,48 @@ function Shop() {
           Obtén Robux de forma segura y económica. ¡Cada compra te da puntos para participar en nuestros sorteos mensuales!
         </p>
       </div>
-      
-      {/* Filters */}
-      <div className="flex justify-center gap-4 mb-12">
+
+      {/* Filtros */}
+      <div className="flex flex-wrap justify-center gap-4 mb-12">
         <button
           onClick={() => setFilter('all')}
-          className={`px-6 py-3 rounded-lg transition-all duration-200 flex items-center gap-2
-            ${filter === 'all' 
-              ? 'bg-blue-600 dark:bg-blue-500 text-white shadow-lg shadow-blue-500/30' 
-              : 'bg-gray-100 dark:bg-gray-800 dark:text-gray-300'}`}
+          className={`w-full md:w-auto px-6 py-3 rounded-lg transition-all duration-200 flex items-center gap-2 text-center
+          ${filter === 'all'
+            ? 'bg-blue-600 dark:bg-blue-500 text-white shadow-lg shadow-blue-500/30'
+            : 'bg-gray-100 dark:bg-gray-800 dark:text-gray-300'}`}
         >
           <Store className="w-5 h-5" />
           Todos
         </button>
         <button
           onClick={() => setFilter('instant')}
-          className={`px-6 py-3 rounded-lg transition-all duration-200 flex items-center gap-2
-            ${filter === 'instant' 
-              ? 'bg-blue-600 dark:bg-blue-500 text-white shadow-lg shadow-blue-500/30' 
-              : 'bg-gray-100 dark:bg-gray-800 dark:text-gray-300'}`}
+          className={`w-full md:w-auto px-6 py-3 rounded-lg transition-all duration-200 flex items-center gap-2 text-center
+          ${filter === 'instant'
+            ? 'bg-blue-600 dark:bg-blue-500 text-white shadow-lg shadow-blue-500/30'
+            : 'bg-gray-100 dark:bg-gray-800 dark:text-gray-300'}`}
         >
           <Zap className="w-5 h-5" />
           Entrega instantánea
         </button>
         <button
           onClick={() => setFilter('delayed')}
-          className={`px-6 py-3 rounded-lg transition-all duration-200 flex items-center gap-2
-            ${filter === 'delayed' 
-              ? 'bg-blue-600 dark:bg-blue-500 text-white shadow-lg shadow-blue-500/30' 
-              : 'bg-gray-100 dark:bg-gray-800 dark:text-gray-300'}`}
+          className={`w-full md:w-auto px-6 py-3 rounded-lg transition-all duration-200 flex items-center gap-2 text-center
+          ${filter === 'delayed'
+            ? 'bg-blue-600 dark:bg-blue-500 text-white shadow-lg shadow-blue-500/30'
+            : 'bg-gray-100 dark:bg-gray-800 dark:text-gray-300'}`}
         >
           <Clock className="w-5 h-5" />
           Ahorra con espera
         </button>
       </div>
 
-      {/* Product Grid */}
+      {/* Grid de productos */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {filteredProducts.map((product) => (
-          <div 
-            key={product.id} 
+          <div
+            key={product.id}
             className={`relative bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-200
-              ${product.popular ? 'border-2 border-blue-500 dark:border-blue-400' : ''}`}
+            ${product.popular ? 'border-2 border-blue-500 dark:border-blue-400' : ''}`}
           >
             {product.popular && (
               <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
@@ -102,7 +96,7 @@ function Shop() {
                 <span className="bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-300 px-3 py-1 rounded-full text-sm font-medium flex items-center gap-1">
                   <Zap className="w-4 h-4" />
                   Instantáneo
-                </span> 
+                </span>
               ) : (
                 <span className="bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-300 px-3 py-1 rounded-full text-sm font-medium flex items-center gap-1">
                   <Clock className="w-4 h-4" />

@@ -7,6 +7,7 @@ import Raffle from './pages/Raffle';
 import Profile from './pages/Profile';
 import Support from './pages/Support';
 import { useEffect } from 'react';
+import { AuthProvider } from './context/AuthContext';
 
 function App() {
   useEffect(() => {
@@ -19,6 +20,7 @@ function App() {
   }, []);
 
   return (
+    <AuthProvider>
     <Router>
       <div className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors duration-200">
         <Navbar />
@@ -31,6 +33,7 @@ function App() {
         </Routes>
       </div>
     </Router>
+    </AuthProvider>
   );
 }
 

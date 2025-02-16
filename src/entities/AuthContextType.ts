@@ -3,7 +3,9 @@ import { User } from "@supabase/supabase-js";
 export type AuthContextType = {
     user: User | null;
     loading: boolean;
-    singIn: (email: string, password: string )=> Promise<void>;
-    singOut: ()=> Promise<void>;
+    signIn: (email: string, password: string )=> Promise<void>;
+    signUp: (email: string, password: string )=> Promise<void>;
+    signOut: ()=> Promise<void>;
+    signInWithGoogle: ()=> Promise<void>;
 
 }

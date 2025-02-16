@@ -20,7 +20,7 @@ function Raffle() {
       <div className="text-center mb-12">
         <Gift className="w-16 h-16 mx-auto text-blue-600 mb-4" />
         <h1 className="text-4xl font-bold mb-4">Sorteo Mensual de Robux</h1>
-        <p className="text-xl text-gray-600">
+        <p className="text-xl text-gray-600 dark:text-gray-300">
           ¡Participa y gana 5000 Robux!
         </p>
       </div>
